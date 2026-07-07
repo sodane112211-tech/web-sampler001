@@ -1,0 +1,24 @@
+@media (max-width: 768px) {
+    .header-main {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+    .global-controls {
+        width: 100%;
+        justify-content: space-between;
+    }
+    .toolbar {
+        flex-wrap: wrap;
+    }
+    #search-pads {
+        width: 100%;
+    }
+    .grid-view {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 10px;
+    }
+    .sampler-pad {
+        height: 130px;
+    }
+}

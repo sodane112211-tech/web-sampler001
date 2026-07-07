@@ -1,0 +1,6 @@
+[
+  { "id": 1, "name": "Kick", "sample": "assets/sounds/kick.wav", "key": "a", "volume": 1.0, "pitch": 1.0, "loop": false, "color": "#ff4757", "isFavorite": false, "mute": false, "solo": false, "playCount": 0, "lastPlayed": null, "totalDuration": 0 },
+  { "id": 2, "name": "Snare", "sample": "assets/sounds/snare.wav", "key": "s", "volume": 1.0, "pitch": 1.0, "loop": false, "color": "#1e90ff", "isFavorite": false, "mute": false, "solo": false, "playCount": 0, "lastPlayed": null, "totalDuration": 0 },
+  { "id": 3, "name": "Hi-Hat", "sample": "assets/sounds/hihat.wav", "key": "d", "volume": 1.0, "pitch": 1.0, "loop": false, "color": "#2ed573", "isFavorite": false, "mute": false, "solo": false, "playCount": 0, "lastPlayed": null, "totalDuration": 0 },
+  { "id": 4, "name": "Clap", "sample": "assets/sounds/clap.wav", "key": "f", "volume": 1.0, "pitch": 1.0, "loop": false, "color": "#ffa502", "isFavorite": false, "mute": false, "solo": false, "playCount": 0, "lastPlayed": null, "totalDuration": 0 }
+]

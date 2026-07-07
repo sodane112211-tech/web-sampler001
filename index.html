@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Sampler Studio</title>
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/pads.css">
+    <link rel="stylesheet" href="css/controls.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/mobile.css">
+</head>
+<body>
+    <div id="app">
+        <header class="studio-header">
+            <div class="header-main">
+                <h1>🎵 Web Sampler Studio</h1>
+                <div class="global-controls">
+                    <div class="control-group">
+                        <label for="master-volume">Master Vol</label>
+                        <input type="range" id="master-volume" min="0" max="1" step="0.01" value="0.8">
+                    </div>
+                    <button id="stop-all-btn" class="btn btn-danger">🔴 ALL STOP</button>
+                    <button id="theme-toggle" class="btn">🌓 Theme</button>
+                </div>
+            </div>
+            
+            <div class="toolbar">
+                <input type="text" id="search-pads" placeholder="🔍 パッド名で検索...">
+                <button id="filter-favorites" class="btn">⭐ お気に入り</button>
+                <div class="view-switch">
+                    <button id="view-grid" class="btn active">格子型</button>
+                    <button id="view-list" class="btn">リスト型</button>
+                </div>
+                <button id="btn-config" class="btn btn-primary">⚙️ スタジオ設定 / ファイル</button>
+            </div>
+        </header>
+
+        <main class="sampler-container">
+            <div id="pads-grid" class="grid-view"></div>
+        </main>
+
+        <div id="config-modal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>⚙️ スタジオ管理パネル</h2>
+                
+                <div class="modal-section">
+                    <h3>🎹 パッド総数の変更</h3>
+                    <div class="flex-row">
+                        <input type="number" id="pad-count-select" min="4" max="128" value="16">
+                        <button id="apply-pad-count" class="btn">変更を適用</button>
+                    </div>
+                </div>
+
+                <div class="modal-section">
+                    <h3>📁 データ入出力 & バックアップ</h3>
+                    <div class="btn-group">
+                        <button id="btn-export" class="btn">📤 JSONエクスポート</button>
+                        <button id="btn-import-trigger" class="btn">📥 JSONインポート</button>
+                        <input type="file" id="import-file" accept=".json" style="display:none">
+                        <button id="btn-reset" class="btn btn-danger">⚠️ フルリセット</button>
+                    </div>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>⌨️ キーボードショートカット一覧</h3>
+                    <ul class="shortcut-list">
+                        <li><strong>Esc</strong>: すべての音声を停止</li>
+                        <li><strong>トリガー連[T]</strong>: 1回叩くと最後まで再生</li>
+                        <li><strong>ゲート単[G]</strong>: 押している間だけ再生（離すと停止）</li>
+                        <li><strong>ドラッグ＆ドロップ</strong>: パッドを自由に並び替え</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="pad-edit-modal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close-edit-modal">&times;</span>
+                <h2>🎛️ パッド詳細設定: <span id="edit-pad-title"></span></h2>
+                <input type="hidden" id="edit-pad-id">
+                
+                <div class="modal-section">
+                    <label>パッド名:</label>
+                    <input type="text" id="edit-pad-name">
+                </div>
+                <div class="modal-section">
+                    <label>トリガーキー (重複チェック付き):</label>
+                    <input type="text" id="edit-pad-key" maxlength="1" style="text-transform: lowercase;">
+                    <span id="key-error-msg" class="error-text"></span>
+                </div>
+                <div class="modal-section">
+                    <label>再生モード:</label>
+                    <select id="edit-pad-play-mode">
+                        <option value="trigger">トリガー（最後まで再生）</option>
+                        <option value="gate">ゲート（離すと即停止）</option>
+                    </select>
+                </div>
+                <div class="modal-section">
+                    <label>パッドカラー:</label>
+                    <input type="color" id="edit-pad-color">
+                </div>
+                <div class="modal-section">
+                    <label>画像URL (オプション):</label>
+                    <input type="text" id="edit-pad-image" placeholder="https://example.com/image.jpg">
+                </div>
+                
+                <div class="btn-group">
+                    <button id="btn-save-pad-edit" class="btn btn-primary">設定を保存</button>
+                </div>
+
+                <div class="modal-section stats-box">
+                    <h3>📊 パッド統計情報</h3>
+                    <p>再生回数: <span id="stat-play-count">0</span> 回</p>
+                    <p>最終再生日時: <span id="stat-last-played">-</span></p>
+                    <p>総再生時間: <span id="stat-total-duration">0</span> 秒</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>

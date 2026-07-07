@@ -1,0 +1,11 @@
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+}
+
+input[type="range"] {
+    accent-color: var(--accent-color);
+    cursor: pointer;
+}

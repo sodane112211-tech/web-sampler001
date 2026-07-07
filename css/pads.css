@@ -1,0 +1,175 @@
+/* パッド全体のスタイル */
+.sampler-pad {
+    background-color: var(--pad-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+    transition: transform 0.05s, box-shadow 0.2s, background-color 0.2s;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* ロックされたパッド */
+.sampler-pad.pad-locked {
+    border-style: dotted;
+}
+
+/* ロック中の操作無効化 */
+.sampler-pad.pad-locked input,
+.sampler-pad.pad-locked .btn-pitch-reset,
+.sampler-pad.pad-locked .disabled-clicked {
+    opacity: 0.3;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* 再生中のアニメーション */
+.sampler-pad.playing {
+    transform: scale(0.96);
+    box-shadow: 0 0 20px var(--pad-color, var(--accent-color));
+    background-color: var(--text-color) !important;
+    color: var(--bg-color);
+}
+
+/* 上部：キー表示＆アクションボタン */
+.pad-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
+    width: 100%;
+}
+
+.pad-key-badge {
+    font-size: 0.8rem;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.pad-key-badge small {
+    font-size: 0.65rem;
+    opacity: 0.8;
+    margin-left: 2px;
+}
+
+.pad-actions {
+    display: flex;
+    gap: 3px;
+}
+
+/* パッド内ボタンの共通デザイン */
+.pad-btn {
+    background: rgba(0,0,0,0.4);
+    border: none;
+    color: #fff;
+    font-size: 0.75rem;
+    padding: 3px 6px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.1s;
+}
+.pad-btn:hover {
+    background: rgba(0,0,0,0.6);
+}
+
+.pad-btn.active-mute { background: var(--mute-color); }
+.pad-btn.active-solo { background: var(--solo-color); }
+.pad-btn.active-fav { color: #ffd32a; }
+.sampler-pad.pad-locked .pad-lock-btn { background: rgba(255, 71, 87, 0.3); }
+
+/* 中央：パッド名 */
+.pad-body {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin: 8px 0;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+    z-index: 2;
+    pointer-events: none;
+    word-break: break-all;
+}
+
+/* 下部：アップロード＆ツマミ全体 */
+.pad-footer {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    z-index: 2;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* グレーのコントロールボックス */
+.pad-knobs {
+    display: flex;
+    gap: 4px; /* 💡 隙間を狭くして右ハミ出しを徹底ガード */
+    background: rgba(0, 0, 0, 0.25);
+    padding: 4px 6px;
+    border-radius: 8px;
+    flex: 1;
+    min-width: 0; /* 💡 親の幅を超えて広がらないように固定 */
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pad-knobs label {
+    font-size: 0.6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+    color: var(--text-muted);
+}
+
+/* スライダーの調整 */
+.pad-knobs input[type="range"] {
+    width: 35px; /* 💡 さらに小さく絞り込んでズレを解消 */
+    height: 4px;
+    cursor: pointer;
+    margin: 0;
+}
+
+.pad-knobs input[type="checkbox"] {
+    cursor: pointer;
+    margin: 0;
+}
+
+/* ピッチコントロール周辺の微調整 */
+.pitch-label-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pitch-control-flex {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.btn-pitch-reset {
+    padding: 0px 2px !important;
+    font-size: 0.55rem !important;
+    background: rgba(255, 255, 255, 0.15);
+    line-height: 1.1;
+}
+
+/* リストビューモード時のスタイル */
+.list-view .sampler-pad {
+    height: 70px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+.list-view .pad-body { margin: 0; }
